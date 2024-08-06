@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div :class="{ 'is-collapsed': sidebarStorage.isCollapsed }" class="hello">
+    <h1>{{  }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,13 +31,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+<script setup>
+import { useSidebarStore } from '@/store/sidebarStore';
+
+
+const sidebarStorage = useSidebarStore();
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -55,5 +53,17 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.hello {
+  transition: margin-left 0.3s;
+}
+
+.hello.is-collapsed {
+  margin-left: 70px; /* Cuando el sidebar está contraído */
+}
+
+.hello {
+  margin-left: 250px; /* Cuando el sidebar está expandido */
 }
 </style>

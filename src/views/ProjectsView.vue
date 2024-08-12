@@ -1,8 +1,7 @@
 <template>
     <div class="home">
       <SideBar/>
-      <div>
-        <h1>Tabla de Projectos</h1>
+        <div class="background">
         <span class="projectTable">
           <ProjectsTable/>
         </span>
@@ -18,7 +17,7 @@
   </script>
   <style>
   .home{
-    background-color: #ccc;
+    background-color: #3d3d3d;
     height: 100vh;
     position: relative;
     top: -8px;
@@ -30,4 +29,8 @@
     align-content: center;
     justify-content: center;
   }
+
+  .background {
+    background-color: #3d3d3d;
+}
   </style>

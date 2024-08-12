@@ -24,10 +24,10 @@ const sidebarStore = useSidebarStore();
 const currentIcon = ref(sidebarStore.isCollapsed ? 'fas fa-arrow-left' : 'fas fa-bars'); // Icono inicial
 
 const menuItems = ref([
-  { path: '/home', name: 'Inicio', icon: 'fa fa-home' },
+  // { path: '/home', name: 'Inicio', icon: 'fa fa-home' },
   { path: '/projects', name: 'Proyectos', icon: 'fa fa-folder' },
-  { path: '/tasks', name: 'Tareas', icon: 'fa fa-tasks' },
-  { path: '/settings', name: 'Configuración', icon: 'fa fa-cog' }
+  // { path: '/tasks', name: 'Tareas', icon: 'fa fa-tasks' },
+  // { path: '/settings', name: 'Configuración', icon: 'fa fa-cog' }
 ]);
 
 watch(() => sidebarStore.isCollapsed, (newVal) => {
@@ -43,7 +43,7 @@ watch(() => sidebarStore.isCollapsed, (newVal) => {
 .sidebar {
   width: 250px;
     height: 100vh;
-    background-color: #2c3e50;
+    background-color: black;
     color: #fff;
     position: fixed;
     left: 0;

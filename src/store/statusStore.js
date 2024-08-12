@@ -2,19 +2,19 @@ import { defineStore } from "pinia";
 
 import { useAuth } from "@/store/auth"
 
-export const useProjectStore = defineStore("project",{
+export const useStatusStore = defineStore("status",{
     state: () => {
         return {
-            projects: [],
-            baseUrl: "https://projectsapi.ivancano.com/api/project"
-            // baseUrl: "http://localhost:3000/api/project"
+            statuses: [],
+            baseUrl: "https://projectsapi.ivancano.com/api/statuses"
+            // baseUrl: "http://localhost:3000/api/statuses"
         }
     },
     getters: {
         
     },
     actions: {
-        async getProjects() {
+        async getStatuses() {
             const auth = useAuth();
             
             const uri = `${this.baseUrl}`
@@ -33,11 +33,11 @@ export const useProjectStore = defineStore("project",{
             if(response.status == false) {
                 return false
             } else {
-                this.projects = response.data
+                this.statuses = response.data
                 return true
             }
         },
-        async createProject(name, description) {
+        async createStatus(name) {
             const auth = useAuth();
             
             const uri = `${this.baseUrl}/register`
@@ -51,7 +51,6 @@ export const useProjectStore = defineStore("project",{
                 },
                 body: JSON.stringify({
                     "name": name,
-                    "description": description
                 })
             })
 
@@ -68,4 +67,4 @@ export const useProjectStore = defineStore("project",{
     persist: true
 })
 
-export default useProjectStore
+export default useStatusStore

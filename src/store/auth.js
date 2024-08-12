@@ -5,9 +5,9 @@ export const useAuth = defineStore("auth",{
         return {
             token: null,
             // user_name: null,
-            // id_user: null,
-            // baseUrl: "https://bdoapi.ivancano.com/api"
-            baseUrl: "http://localhost:3000/api/users"
+            id_user: null,
+            baseUrl: "https://projectsapi.ivancano.com/api/users"
+            // baseUrl: "http://localhost:3000/api/users"
         }
     },
     getters: {
@@ -34,12 +34,12 @@ export const useAuth = defineStore("auth",{
             if(response.status == false) {
                 this.token = null
                 // this.user_name = null
-                // this.id_user = null
+                this.id_user = null
                 return false
             } else {
                 this.token = response.data.token
                 // this.user_name = response.data.user_name
-                // this.id_user = response.data.id_user
+                this.id_user = response.data.id
                 return true
             }
         }

@@ -33,6 +33,12 @@
         </v-toolbar>
     </template>
     <!-- eslint-disable-next-line vue/valid-v-slot -->
+    <template v-slot:item.name="{ item }">
+      <router-link :to="{ name: 'tasks', params: { id: item.id } }">
+        <v-btn text>{{ item.name }}</v-btn>
+      </router-link>
+    </template>
+    <!-- eslint-disable-next-line vue/valid-v-slot -->
     <template v-slot:item.actions="{ item }">
         <v-icon class="me-2" size="small" @click="editItem(item)">mdi-pencil</v-icon>
         <v-icon size="small" @click="deleteItem(item)">mdi-delete</v-icon>
@@ -54,11 +60,18 @@ import { ref, reactive, computed, watch, nextTick, onMounted } from 'vue';
 
 onMounted(async () => {
     console.log(headers.value)
-    const response = await projectStore.getProjects()
+    await projectStore.getProjects()
 
-    response.data.forEach(async element => {
-        await projects.value.push(element)
-    });
+    // response.data.forEach(async element => {
+    //     await projects.value.push(element)
+    // });
+
+    projects.value = projectStore.projects.map(projects => ({
+      id: projects.id,
+      name: projects.name,
+      description: projects.description,
+      created_at: projects.created_at,
+    }));
 })
 
 // const items = ref(['Option 1', 'Option 2', 'Option 3']);
@@ -97,9 +110,9 @@ watch(dialog, (newValue) => { if (!newValue) close(); });
 watch(dialogDelete, (newValue) => { if (!newValue) closeDelete(); });
 
 async function initialize() {
-    const response = await projectStore.getProjects()
+    await projectStore.getProjects()
     projects.value = []
-    response.data.forEach(async element => {
+    projectStore.projects.forEach(async element => {
         await projects.value.push(element)
     });
 }

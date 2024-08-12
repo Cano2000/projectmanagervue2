@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuth } from '@/store/auth'
-import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
 import TasksView from '@/views/TasksView.vue'
@@ -15,14 +14,6 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/home',
-    name: 'home',
-    meta: {
-      requireAuth: true
-    },
-    component: HomeView
-  },
-  {
     path: '/projects',
     name: 'projects',
     meta: {
@@ -31,7 +22,7 @@ const routes = [
     component: ProjectsView
   },
   {
-    path: '/tasks',
+    path: '/tasks/:id?',
     name: 'tasks',
     meta: {
       requireAuth: true

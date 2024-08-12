@@ -1,11 +1,9 @@
 <template>
     <div class="home">
         <SideBar/>
-        <div>
-            <h1>Tabla de Tareas</h1>
-            <span class="projectTable">
+        <div class="background">
+            <span class="tasks">
             <TaskComponent/>
-            <!-- <DoubleTaskComponent/> -->
             </span>
         </div>
     </div>
@@ -20,10 +18,14 @@ import SideBar from '@/components/SideBar.vue'
 </script>
 <style>
 .home{
-background-color: #ccc;
+background-color: #3d3d3d;
 height: 100vh;
 position: relative;
 top: -8px;
+}
+
+.background {
+    background-color: #3d3d3d;
 }
 
 </style>
